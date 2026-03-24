@@ -1,130 +1,235 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MLOps Quiz 120 ข้อ • เวอร์ชันกวนตีน</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="สนามสอบ MLOps เวอร์ชันกวนตีน แต่ยังใช้งานจริงได้ เปิดผ่าน browser ได้ทันที">
+  <title>MLOps Meme Exam Arena</title>
+  <link rel="preconnect" href="https://media.giphy.com">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="startScreen" class="start-screen">
-    <div class="noise"></div>
-    <div class="start-content">
-      <div class="marquee-wrap">
-        <div class="marquee">⚠️ สนามสอบ MLOps ฉบับปากหมา • ตอบถูกก็โดนแซะ • ตอบผิดก็โดนซ้ำ • แต่หน้าแรกยังเงียบไว้ก่อน เดี๋ยวคนด่า ⚠️</div>
-      </div>
-
-      <div class="hero-meme-grid">
-        <div class="meme-stack left" id="leftMemeStack"></div>
-        <div class="start-card glitch-box">
-          <div class="start-badge">MLOps Exam: คนทำจริงเขาเจ็บแบบนี้ Edition</div>
-          <h1 class="glitch" data-text="พร้อมโดนข้อสอบดึงสติหรือยัง?">พร้อมโดนข้อสอบดึงสติหรือยัง?</h1>
-          <p class="start-copy">
-            หน้าแรกกวนได้ แต่ยังไม่เปิดเสียงให้บ้านแตก<br>
-            พอกดเริ่มเมื่อไร <strong>ตอบถูกหรือตอบผิดจะมีเสียงทุกข้อ</strong> และมี GIF เด้งกลางจอมาเหยียบอีโก้ทันที
+  <div class="page-shell">
+    <section id="landingScreen" class="screen landing-screen active" aria-labelledby="landingTitle">
+      <div class="landing-backdrop"></div>
+      <div class="landing-grid">
+        <div class="landing-copy">
+          <p class="eyebrow" id="landingEyebrow">สนามสอบนี้ไม่ใช่สนามเด็กเล่น แต่ถ้าจะพังก็พังอย่างมีศิลปะ</p>
+          <h1 id="landingTitle" class="landing-title">MLOps Quiz 120 ข้อ ฉบับคนทำจริงที่เริ่มระแวงทุกอย่าง</h1>
+          <p class="landing-subtitle" id="landingSubtitle">
+            ข้อสอบสาย Git, Docker, MLflow, Dataset Versioning, Prompt Engineering, GCP
+            พร้อมคำแซวฟรีทุกครั้งที่นายทำตัวมั่นหน้าเกินข้อมูลในสมอง
           </p>
 
-          <div class="start-actions">
-            <button id="startBtn" class="chaos-btn primary large">เริ่มทำข้อสอบแบบคนยังไม่ยอมแพ้</button>
+          <div class="warning-card">
+            <div class="warning-tag">คำเตือนก่อนกด</div>
+            <p>
+              นี่คือสนามสอบ ไม่ใช่สนามเด็กเล่น แต่ถ้าพร้อมพังด้วยศักดิ์ศรีก็เชิญ
+              หน้าแรกเงียบสนิท ไม่มี autoplay เสียง ไม่มียัดเสียงมาหลอกหลอนตอนโหลด
+              แต่พอตอบคำถามเมื่อไร เสียงกับมีมจะเด้งมาฟาดหน้าทันที
+            </p>
           </div>
 
-          <div class="taunt-box" id="tauntBox">ระบบกำลังวอร์มปากไว้ด่านายตอนทำข้อสอบ...</div>
+          <div class="landing-actions">
+            <button id="startQuizBtn" class="primary-btn">เริ่มวัดดวง</button>
+            <button id="shuffleLandingBtn" class="ghost-btn">สุ่มมู้ดคนทำเว็บ</button>
+          </div>
 
-          <div class="asset-note">
-            วางไฟล์ gif/mp3 ของนายไว้ในโฟลเดอร์ <code>assets/</code><br>
-            ถ้าไฟล์ครบ เว็บนี้จะเกรียนขึ้นแบบมีหลักฐานเสียงและภาพ
+          <div class="landing-notes">
+            <div class="note-card">
+              <span class="note-label">โหมดสอบ</span>
+              <strong>ตอบทีละข้อ รู้ถูกผิดทันที แต่ไม่มีเฉลยรวบทีเดียวให้ขี้โกง</strong>
+            </div>
+            <div class="note-card">
+              <span class="note-label">ระบบเสียง</span>
+              <strong>ดังตอนตอบเท่านั้น หน้าแรกเงียบไว้ก่อน เดี๋ยวเพื่อนข้างห้องตกใจ</strong>
+            </div>
+            <div class="note-card">
+              <span class="note-label">ของแต่ง</span>
+              <strong>วาง GIF/เสียงของนายใน <code>assets/</code> ได้เลย ระบบเลือก local ก่อน</strong>
+            </div>
           </div>
         </div>
-        <div class="meme-stack right" id="rightMemeStack"></div>
-      </div>
 
-      <div class="bottom-roast" id="bottomRoast">
-        <span>หมายเหตุจากเว็บ:</span> หน้าแรกเงียบให้แล้ว แต่พอเริ่มสอบอย่าหวังความสงบ
-      </div>
-    </div>
-  </div>
+        <div class="landing-visual">
+          <div class="hero-card">
+            <div class="hero-card-top">
+              <span class="hero-badge" id="heroBadge">คนพร้อมสอบมักไม่พูดเยอะ คนไม่พร้อมมักกดเดา</span>
+            </div>
+            <div class="hero-media-wrap">
+              <img id="landingHeroGif" class="hero-media" src="" alt="intro meme">
+            </div>
+            <p id="landingHeroCaption" class="hero-caption">มีมนี้กำลังประเมินว่าเธออ่านมาจริงหรือมาเช็คดวง</p>
+          </div>
 
-  <div class="app-shell hidden" id="appShell">
-    <aside class="sidebar">
-      <h1>MLOps Quiz</h1>
-      <p class="subtitle">120 ข้อ • Git • Docker • MLflow • Dataset Versioning • Prompt Engineering • GCP • เวอร์ชันเกรียนจัดแต่ใช้งานจริง</p>
-
-      <div class="summary-card">
-        <div class="summary-row"><span>ทำไปแล้ว</span><strong id="answeredCount">0/120</strong></div>
-        <div class="summary-row"><span>คะแนน</span><strong id="scoreCount">0</strong></div>
-        <div class="summary-row"><span>ถูก</span><strong id="correctCount">0</strong></div>
-        <div class="summary-row"><span>ผิด</span><strong id="wrongCount">0</strong></div>
-      </div>
-
-      <div class="controls">
-        <label for="topicFilter">กรองตามหัวข้อ</label>
-        <select id="topicFilter">
-          <option value="all">ทั้งหมด</option>
-        </select>
-
-        <label for="searchInput">ค้นหาคำถาม</label>
-        <input id="searchInput" type="text" placeholder="เช่น git reset, MLflow, Docker" />
-
-        <div class="button-group">
-          <button id="submitAllBtn" class="primary">จบเกม ดูคะแนนจริง</button>
-          <button id="resetBtn" class="ghost">ล้างคำตอบ แล้วทำเป็นไม่เคยเกิดขึ้น</button>
+          <div class="roast-board">
+            <div class="board-head">บอร์ดประกาศจากเว็บ</div>
+            <p id="landingRoast" class="board-copy">
+              ถ้าแยกไม่ออกว่า `git fetch` ต่างจาก `git pull` ยังไง เว็บนี้มีสิทธิ์หัวเราะใส่ได้ตามกฎหมายธรรมชาติ
+            </p>
+          </div>
         </div>
+      </div>
+    </section>
 
-        <div class="button-group compact">
-          <button id="changeGifBtn" class="ghost">สลับกิฟหน้าข้อสอบ</button>
+    <section id="quizScreen" class="screen quiz-screen" aria-labelledby="quizTitle">
+      <div class="quiz-topbar">
+        <button id="backHomeBtn" class="ghost-btn compact-btn">กลับหน้าแรก</button>
+        <div class="topbar-copy">
+          <p class="eyebrow" id="quizEyebrow">ตอนนี้ไม่มีใครช่วยนาย นอกจากสมองที่เหลืออยู่</p>
+          <h2 id="quizTitle">โหมดสอบจริง แบบทีละข้อ</h2>
         </div>
       </div>
 
-      <div class="legend">
-        <div><span class="dot unanswered"></span>ยังไม่ตอบ</div>
-        <div><span class="dot correct"></span>ตอบถูก</div>
-        <div><span class="dot wrong"></span>ตอบผิด</div>
+      <div class="quiz-dashboard">
+        <div class="progress-card">
+          <div class="progress-head">
+            <span id="progressText">ข้อ 1/120</span>
+            <span id="progressPercent">0%</span>
+          </div>
+          <div class="progress-bar">
+            <div id="progressFill" class="progress-fill"></div>
+          </div>
+        </div>
+
+        <div class="stat-card-grid">
+          <article class="stat-card">
+            <span class="stat-label">คะแนนตอนนี้</span>
+            <strong id="scoreValue" class="stat-value">0</strong>
+          </article>
+          <article class="stat-card">
+            <span class="stat-label">ตอบถูก</span>
+            <strong id="correctValue" class="stat-value">0</strong>
+          </article>
+          <article class="stat-card">
+            <span class="stat-label">ตอบพัง</span>
+            <strong id="wrongValue" class="stat-value">0</strong>
+          </article>
+        </div>
       </div>
 
-      <div id="navGrid" class="nav-grid"></div>
-    </aside>
+      <article class="question-card">
+        <div class="question-meta">
+          <span id="questionTopic" class="topic-pill">Docker</span>
+          <span id="questionMood" class="mood-pill">ข้อสอบกำลังเช็กความไม่มั่วของนาย</span>
+        </div>
 
-    <main class="main">
-      <section class="hero meme-hero">
-        <div class="hero-copy">
-          <h2>ข้อสอบจริง แต่เว็บปากเสีย</h2>
-          <p>
-            เลือกคำตอบแบบ <strong>ก-จ</strong> ระบบจะเฉลยทันที พร้อมเสียงและ GIF เด้งกลางจอ<br>
-            ตอบถูกก็โดนแซะว่าห้ามเหลิง ตอบผิดก็โดนกระทืบซ้ำด้วยมีม
+        <h3 id="questionText" class="question-text">กำลังโหลดคำถามอยู่ ถ้ายังไม่มาแปลว่าไฟล์พัง ไม่ใช่ดวงนายอย่างเดียว</h3>
+
+        <div id="choicesContainer" class="choices-container"></div>
+
+        <div id="feedbackBox" class="feedback-box hidden" aria-live="polite">
+          <div class="feedback-top">
+            <span id="feedbackBadge" class="feedback-badge">ผลตัดสิน</span>
+            <span id="feedbackRoast" class="feedback-roast">เว็บกำลังเตรียมคำแซว</span>
+          </div>
+          <p id="feedbackAnswer" class="feedback-answer"></p>
+          <p id="feedbackExplanation" class="feedback-explanation"></p>
+        </div>
+
+        <div class="question-actions">
+          <button id="nextQuestionBtn" class="primary-btn" disabled>ไปพังข้อต่อไป</button>
+        </div>
+      </article>
+    </section>
+
+    <section id="resultScreen" class="screen result-screen" aria-labelledby="resultTitle">
+      <div class="result-card">
+        <div class="result-header">
+          <p class="eyebrow">สรุปผลแบบไม่ใส่น้ำตาล</p>
+          <h2 id="resultTitle">คะแนนรวมของนายออกมาแล้ว</h2>
+          <p id="resultSubtitle" class="result-subtitle">
+            เดี๋ยวระบบจะบอกเองว่าควรภูมิใจ หรือควรกลับไปอ่านใหม่แบบไม่โกหกตัวเอง
           </p>
         </div>
-        <div class="hero-gif-panel">
-          <img id="heroGif" class="hero-gif" alt="meme gif" />
-          <div id="heroGifCaption" class="hero-gif-caption">กำลังสุ่มกิฟมานั่งตัดสินชีวิตนาย...</div>
+
+        <div class="result-grid">
+          <div class="result-score-box">
+            <span class="result-score-label">คะแนน</span>
+            <strong id="finalScore" class="result-score">0/120</strong>
+            <span id="finalPercent" class="result-percent">0%</span>
+          </div>
+
+          <div class="result-stats">
+            <div class="result-stat">
+              <span>ตอบถูก</span>
+              <strong id="finalCorrect">0</strong>
+            </div>
+            <div class="result-stat">
+              <span>ตอบผิด</span>
+              <strong id="finalWrong">0</strong>
+            </div>
+            <div class="result-stat">
+              <span>สถานะ</span>
+              <strong id="finalStatus">ยังไม่ตัดสิน</strong>
+            </div>
+          </div>
         </div>
-      </section>
 
-      <section id="resultsBanner" class="results-banner hidden"></section>
+        <div class="result-media-wrap">
+          <img id="resultGif" class="result-gif" src="" alt="result meme">
+        </div>
 
-      <section id="questionList" class="question-list"></section>
-    </main>
-  </div>
+        <div class="result-message-box">
+          <p id="resultMessage" class="result-message"></p>
+          <p id="resultExtra" class="result-extra"></p>
+        </div>
 
-  <div id="answerFlash" class="answer-flash hidden">
-    <div class="answer-flash-inner" id="answerFlashInner">
-      <img id="answerFlashGif" alt="result gif" />
-      <div id="answerFlashText" class="answer-flash-text"></div>
-    </div>
-  </div>
-
-  <div id="gameOverScreen" class="game-over hidden">
-    <div class="game-over-card">
-      <div class="game-over-badge">GAME OVER</div>
-      <img id="gameOverGif" class="game-over-gif" alt="game over gif" />
-      <h3 id="gameOverTitle">คะแนนแบบนี้เว็บยังอึ้ง</h3>
-      <p id="gameOverText">กลับไปอ่านใหม่เถอะ ไม่งั้น Git ยังสงสาร</p>
-      <div class="game-over-actions">
-        <button id="closeGameOverBtn" class="chaos-btn primary">รับสภาพ แล้วไปต่อ</button>
+        <div class="result-actions">
+          <button id="retryBtn" class="primary-btn">สอบใหม่อีกรอบ</button>
+          <button id="resultHomeBtn" class="ghost-btn">กลับหน้าแรก</button>
+        </div>
       </div>
+
+      <div id="confettiLayer" class="confetti-layer" aria-hidden="true"></div>
+    </section>
+
+    <section id="gameOverScreen" class="screen gameover-screen" aria-labelledby="gameOverTitle">
+      <div class="gameover-card">
+        <div class="glitch-stripes"></div>
+        <p class="eyebrow danger">คะแนนระดับนี้เว็บยังสะอึก</p>
+        <h2 id="gameOverTitle">GAME OVER</h2>
+        <p id="gameOverSubtitle" class="gameover-subtitle">
+          นี่ไม่ใช่สอบตกธรรมดา นี่คือการยอมแพ้ต่อความจริงแบบมีกราฟประกอบ
+        </p>
+
+        <div class="gameover-media-wrap">
+          <img id="gameOverGif" class="gameover-gif" src="" alt="game over meme">
+        </div>
+
+        <div class="gameover-stats">
+          <div class="result-stat">
+            <span>คะแนนรวม</span>
+            <strong id="gameOverScore">0/120</strong>
+          </div>
+          <div class="result-stat">
+            <span>เปอร์เซ็นต์</span>
+            <strong id="gameOverPercent">0%</strong>
+          </div>
+          <div class="result-stat">
+            <span>สถานะ</span>
+            <strong>ระบบกำลังถอนหายใจ</strong>
+          </div>
+        </div>
+
+        <p id="gameOverMessage" class="gameover-message"></p>
+
+        <div class="result-actions">
+          <button id="gameOverRetryBtn" class="primary-btn">เอาใหม่ เดี๋ยวค่อยอายทีหลัง</button>
+          <button id="gameOverHomeBtn" class="ghost-btn">กลับหน้าแรก</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div id="memeOverlay" class="meme-overlay hidden" aria-hidden="true">
+    <div id="memeOverlayCard" class="meme-overlay-card">
+      <img id="memeOverlayGif" class="meme-overlay-gif" src="" alt="answer reaction">
+      <p id="memeOverlayText" class="meme-overlay-text"></p>
     </div>
   </div>
 
-  <audio id="memeAudio"></audio>
+  <audio id="fxAudio" preload="none"></audio>
 
   <script src="questions.js"></script>
   <script src="script.js"></script>
